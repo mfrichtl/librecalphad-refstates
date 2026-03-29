@@ -1,0 +1,7 @@
+system:
+  phase_models: Ag-Al.json
+  datasets: input-datasets
+generate_parameters:
+  excess_model: linear
+  ref_state: CustomRefstate2020
+

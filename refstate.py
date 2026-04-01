@@ -90,8 +90,7 @@ for key, value in list(refstate_dict.items()):
     if len(key.split("-")) == 1:
         # Should go into the stable dictionary
         LCRefStateStable[key] = create_espei_custom_refstate_stable(
-            value["Cp_fits.x"],
-            xiong_params=value["xiong_params"],
+            value["Cp_fits.x"], refstate_dict
         )
     elif len(key.split("-")) == 2:
         # Lattice stability key
@@ -105,7 +104,7 @@ for key, value in list(refstate_dict.items()):
                 )
         else:
             LCRefState[(element, phase)] = create_espei_custom_refstate_stable(
-                value["Cp_fits.x"], xiong_params=value["xiong_params"]
+                value["Cp_fits.x"], refstate_dict
             )
 for key, value in list(ser_dict.items()):
     LCRefStateSER[key] = value

@@ -5,9 +5,9 @@ The refdata module contains pure-element reference state data.
 from collections import OrderedDict
 import json
 import importlib.resources as impresources
-from libreCalphad.models.segmented_regression import create_espei_custom_refstate_stable
+from libreCalphad.models.energy import create_espei_custom_refstate_stable
 import os
-from pycalphad.variables import T
+from pycalphad import variables as v
 import symengine as se
 
 
@@ -97,7 +97,7 @@ for key, value in list(refstate_dict.items()):
         if isinstance(value, str):
             if value.startswith("GHSER"):
                 LCRefState[(element, phase)] = se.Piecewise(
-                    (se.Symbol(value), se.And(T < 10000.0, T > 1e-5)),
+                    (se.Symbol(value), se.And(v.T < 10000.0, v.T > 1e-5)),
                     (0, True),
                 )
         else:

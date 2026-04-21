@@ -75,8 +75,11 @@ def _shorten_sympy_floats(sympy_expression, precision=6):
 
 # Just hard code it in for now
 _LCRefState_json = impresources.files("refstate") / "LCRefstates.json"
-with open(_LCRefState_json, "r") as f:
-    refstate_dict = json.load(f)
+if os.path.exists(_LCRefState_json):
+    with open(_LCRefState_json, "r") as f:
+        refstate_dict = json.load(f)
+else:
+    refstate_dict = {}
 _LCSER_json = impresources.files("refstate") / "LCSERparams.json"
 with open(_LCSER_json, "r") as f:
     ser_dict = json.load(f)

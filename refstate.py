@@ -100,7 +100,7 @@ for key, value in list(refstate_dict.items()):
         if isinstance(value, str):
             if value.startswith("GHSER"):
                 LCRefState[(element, phase)] = se.Piecewise(
-                    (se.Symbol(value), se.And(v.T < 10000.0, v.T > 1e-5)),
+                    (se.Symbol(value), se.And(v.T < 10000.0, v.T > 0)),
                     (0, True),
                 )
         else:
